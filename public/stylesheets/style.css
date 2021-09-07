@@ -35,5 +35,15 @@ a {
 
 .pokedetail {
   flex: 2;
-  background: salmon;
+}
+
+.pokedetail h2 {
+  text-align: center;
+}
+
+.pokedetail img {
+  height: 360px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
