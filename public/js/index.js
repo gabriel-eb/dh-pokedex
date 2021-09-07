@@ -4,13 +4,8 @@ window.addEventListener('load', () => {
   fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
     .then(res => res.json())
     .then(res => {
-      res.results.map(pokemon => {
-        populatePokelist(pokemon)
-        
-      })
+      res.results.map(pokemon => populatePokelist(pokemon))
     })
-
-  
 })
 
 function populatePokelist(pokemon) {
@@ -26,13 +21,11 @@ function populatePokelist(pokemon) {
       fetch('https://pokeapi.co/api/v2/pokemon/' + choosedPokemon.innerText)
         .then(detail => detail.json())
         .then(detail => {
-          console.log(detail)
-            const divPokemon = document.querySelector('.pokedetail');
-            divPokemon.innerHTML = `
-              <img src="${detail.sprites.front_default}"/>
-              <h2>${choosedPokemon.innerText}</h2>
-            `
-          
+          const divPokemon = document.querySelector('.pokedetail')
+          divPokemon.innerHTML = `
+                <img src="${detail.sprites.front_default}"/>
+                <h2>${choosedPokemon.innerText}</h2>
+              `
         })
     })
   }
