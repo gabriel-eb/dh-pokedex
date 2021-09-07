@@ -15,19 +15,17 @@ function populatePokelist(pokemon) {
   const pokeList = document.querySelector('ul#pokelist')
   pokeList.appendChild(listElement)
 
-  const list = document.querySelectorAll('li')
-  for (let choosedPokemon of list) {
-    choosedPokemon.addEventListener('click', event => {
-      fetch('https://pokeapi.co/api/v2/pokemon/' + choosedPokemon.innerText)
-        .then(detail => detail.json())
-        .then(detail => {
-          const divPokemon = document.querySelector('.pokedetail')
-          divPokemon.innerHTML = `
+  listElement.addEventListener('click', () => {
+    fetch(pokemon.url)
+      .then(detail => detail.json())
+      .then(detail => {
+        const divPokemon = document.querySelector('.pokedetail')
+        divPokemon.innerHTML = `
                 <img src="${detail.sprites.front_default}"/>
-                <h2>${choosedPokemon.innerText}</h2>
+                <h2>${listElement.innerText}</h2>
               `
-        })
-    })
-  }
+      })
+  })
+
 
 }
